@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050505"><title>Study Hub 6-10 | JKBOSE</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#050505;color:#f5f5f5;font-family:system-ui,Arial}
+header{position:sticky;top:0;background:#090909;border-bottom:1px solid #292929;padding:16px;z-index:5}
+.wrap{max-width:900px;margin:auto;padding:16px}.logo{font-size:25px;font-weight:800}.sub{color:#aaa;font-size:13px}
+.search{display:flex;gap:8px;margin:15px 0}.search input{flex:1;background:#171717;color:white;border:1px solid #333;border-radius:12px;padding:13px;font-size:16px}
+button{cursor:pointer}.btn{background:white;color:#050505;border:0;border-radius:10px;padding:11px 14px;font-weight:700}
+.hero,.card,.item,.quiz{background:#111;border:1px solid #292929;border-radius:16px}.hero{padding:20px}.hero h1{margin:0 0 6px}.muted{color:#aaa}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}.card{padding:15px}.card h3{margin:0 0 5px}.card p{margin:0;color:#aaa;font-size:12px}
+.section{margin:20px 0}.list{display:grid;gap:10px}.item,.quiz{padding:15px}.item h3{margin:0 0 6px}.item p{line-height:1.5;color:#ccc}
+.hidden{display:none}.back{background:#171717;color:white;border:1px solid #333;margin-bottom:12px}.quiz button{display:block;width:100%;text-align:left;background:#181818;color:white;border:1px solid #333;border-radius:10px;padding:11px;margin:7px 0}.ok{background:#303030!important}.no{opacity:.65}
+footer{text-align:center;color:#777;padding:30px}
+</style></head><body>
+<header><div class="wrap" style="padding:0"><div class="logo">Study Hub 6-10</div><div class="sub">JKBOSE • Classes 6 to 10 • All-in-one study companion</div></div></header>
+<div class="wrap">
+<div class="search"><input id="search" placeholder="Search class, subject, chapter or topic"><button class="btn" onclick="searchNow()">Search</button></div>
+<div id="home"><div class="hero"><h1>Learn. Practice. Improve.</h1><p class="muted">Choose your class to explore subjects, revision notes and MCQs.</p></div>
+<div class="section"><h2>Choose Class</h2><div id="classes" class="grid"></div></div>
+<div class="section"><h2>Quick Access</h2><div class="grid">
+<div class="card" onclick="quiz()"><h3>📝 MCQ Quiz</h3><p>Practice questions</p></div>
+<div class="card" onclick="notes()"><h3>📚 Revision Notes</h3><p>Short notes</p></div>
+<div class="card" onclick="allSubjects()"><h3>📖 Subjects</h3><p>All subjects</p></div>
+</div></div></div>
+<div id="page" class="hidden"></div><footer>Study Hub 6-10 • Original study material • JKBOSE-focused</footer>
+</div>
+<script>
+const subjects=["Mathematics","Science","English","Hindi","Social Science","Computer","General Knowledge"];
+const topics={
+Mathematics:["Number System","Fractions and Decimals","Algebra Basics","Geometry","Mensuration","Data Handling"],
+Science:["Matter and Materials","Living Organisms","Force and Motion","Light and Sound","Electricity","Environment"],
+English:["Grammar","Vocabulary","Reading Comprehension","Writing Skills","Parts of Speech","Tenses"],
+Hindi:["व्याकरण","शब्द भंडार","पठन कौशल","लेखन कौशल","वाक्य रचना","साहित्य अभ्यास"],
+"Social Science":["History","Geography","Civics","Economics","Maps and Resources","Our Society"],
+Computer:["Computer Basics","Internet and Safety","Word Processing","Spreadsheets","Programming Basics","Digital Citizenship"],
+"General Knowledge":["India","World","Science & Technology","Sports","Environment","Important Days"]};
+const notesText={
+"Number System":"Numbers can be represented and compared using place value. Revise natural, whole and integer numbers.",
+"Fractions and Decimals":"Fractions represent parts of a whole. Decimals are another way to represent fractions using powers of ten.",
+"Algebra Basics":"Algebra uses variables, numbers and operations. Learn expressions, like terms and simple equations.",
+"Geometry":"Geometry studies points, lines, angles and shapes. Use diagrams and known properties while solving problems.",
+"Mensuration":"Mensuration deals with perimeter, area and volume. Always write the correct unit.",
+"Data Handling":"Organise data in tables and graphs. Mean is the sum of observations divided by their number.",
+"Matter and Materials":"Matter has mass and occupies space. Materials have different physical properties.",
+"Living Organisms":"Living things carry out life processes such as nutrition, respiration, growth and reproduction.",
+"Force and Motion":"A force can change motion or direction. Speed is distance travelled per unit time.",
+"Light and Sound":"Light can be reflected or refracted. Sound is produced by vibrations.",
+"Electricity":"A simple electric circuit needs a source, conducting path and suitable components.",
+"Environment":"An ecosystem contains living organisms and their surroundings. Conservation protects resources and biodiversity.",
+"Grammar":"Grammar gives rules for clear sentences. Revise parts of speech, sentence structure and common errors.",
+"Vocabulary":"Build vocabulary through reading, context, synonyms, antonyms and word families.",
+"Reading Comprehension":"Read carefully, identify the main idea and answer using evidence from the passage.",
+"Writing Skills":"Good writing has a clear purpose, logical order, correct grammar and suitable vocabulary.",
+"Parts of Speech":"Nouns, pronouns, verbs, adjectives, adverbs, prepositions and conjunctions are common parts of speech.",
+"Tenses":"Tense shows the time of an action. Practise common present, past and future forms.",
+"व्याकरण":"हिंदी व्याकरण भाषा को शुद्ध और स्पष्ट बनाने के नियमों का अध्ययन है।",
+"शब्द भंडार":"नए शब्दों के अर्थ, पर्यायवाची और विलोम शब्द सीखें और वाक्यों में प्रयोग करें।",
+"पठन कौशल":"गद्यांश पढ़कर मुख्य विचार और आवश्यक जानकारी पहचानें।",
+"लेखन कौशल":"लेखन में विषय की स्पष्टता, क्रम, सही वर्तनी और उचित भाषा रखें।",
+"वाक्य रचना":"वाक्य शब्दों का ऐसा समूह है जो पूरा अर्थ देता है। सरल और संयुक्त वाक्यों का अभ्यास करें।",
+"साहित्य अभ्यास":"कहानी या कविता में पात्र, भाव, मुख्य विचार और संदेश पर ध्यान दें।",
+"History":"History studies change over time using evidence such as texts, monuments and other sources.",
+"Geography":"Geography studies places, people and relationships between humans and the physical environment.",
+"Civics":"Civics explains communities, government, rights and responsibilities.",
+"Economics":"Economics studies how people use limited resources to satisfy needs and wants.",
+"Maps and Resources":"Maps use symbols, scale and directions. Natural resources should be used carefully.",
+"Our Society":"Society includes people, institutions and relationships. Cooperation helps communities.",
+"Computer Basics":"Computer systems use hardware and software to process information.",
+"Internet and Safety":"Protect passwords and private information. Check links and information before using or sharing them.",
+"Word Processing":"Word processors help create, edit and format documents.",
+"Spreadsheets":"Spreadsheets organise data in rows and columns and can use formulas for calculations.",
+"Programming Basics":"Programs are sets of instructions. Algorithms, variables, conditions and loops are basic concepts.",
+"Digital Citizenship":"Responsible digital citizens protect privacy and communicate respectfully.",
+"India":"India has diverse languages, regions, traditions and natural landscapes.",
+"World":"Revise continents, oceans, countries, capitals and basic world geography.",
+"Science & Technology":"Science uses observation, testing and evidence; technology applies knowledge to practical problems.",
+"Sports":"Sports develop skills such as teamwork, discipline and coordination.",
+"Important Days":"Important days highlight themes such as education, environment, science and human rights."};
+function note(t,c,s){return notesText[t]||("Class "+c+" "+s+" revision topic: "+t+". Make short notes and practise questions.")}
+function renderClasses(){classes.innerHTML=[6,7,8,9,10].map(c=>`<div class="card" onclick="showClass(${c})"><h3>Class ${c}</h3><p>7 subjects</p></div>`).join("")}
+function showClass(c){home.classList.add("hidden");page.classList.remove("hidden");page.innerHTML=`<button class="btn back" onclick="goHome()">← Back</button><h2>Class ${c}</h2><div class="grid">${subjects.map(s=>`<div class="card" onclick="showSubject(${c},'${s.replace(/'/g,"\\'")}')"><h3>${s}</h3><p>6 topics</p></div>`).join("")}</div>`}
+function showSubject(c,s){page.innerHTML=`<button class="btn back" onclick="showClass(${c})">← Class ${c}</button><h2>${s}</h2><div class="list">${topics[s].map((t,i)=>`<div class="item"><h3>${i+1}. ${t}</h3><p>${note(t,c,s)}</p></div>`).join("")}</div>`}
+function notes(){home.classList.add("hidden");page.classList.remove("hidden");let a=[];[6,7,8,9,10].forEach(c=>subjects.slice(0,4).forEach(s=>topics[s].slice(0,2).forEach(t=>a.push(`<div class="item"><h3>Class ${c} • ${s} • ${t}</h3><p>${note(t,c,s)}</p></div>`))));page.innerHTML=`<button class="btn back" onclick="goHome()">← Back</button><h2>Revision Notes</h2><div class="list">${a.join("")}</div>`}
+function allSubjects(){home.classList.add("hidden");page.classList.remove("hidden");page.innerHTML=`<button class="btn back" onclick="goHome()">← Back</button><h2>All Subjects</h2><div class="grid">${subjects.map(s=>`<div class="card"><h3>${s}</h3><p>Classes 6-10</p></div>`).join("")}</div>`}
+const qs=[["What is an input device?","Keyboard"],["A simple electric circuit needs a complete path for current.","True"],["Which is a part of speech?","Verb"],["What can a force change?","Motion or direction"],["What protects biodiversity?","Conservation"],["A spreadsheet uses rows and columns.","True"]];
+function quiz(){home.classList.add("hidden");page.classList.remove("hidden");page.innerHTML=`<button class="btn back" onclick="goHome()">← Back</button><h2>MCQ Quiz</h2>${qs.map((q,i)=>`<div class="quiz"><b>${i+1}. ${q[0]}</b><button onclick="check(this,true)">${q[1]}</button><button onclick="check(this,false)">Other answer</button></div>`).join("")}`}
+function check(b,ok){b.classList.add(ok?"ok":"no");b.parentElement.querySelectorAll("button").forEach(x=>x.disabled=true)}
+function searchNow(){let q=search.value.trim().toLowerCase();home.classList.add("hidden");page.classList.remove("hidden");if(!q){goHome();return}let a=[];[6,7,8,9,10].forEach(c=>subjects.forEach(s=>topics[s].forEach(t=>{if((s+" "+t+" "+note(t,c,s)).toLowerCase().includes(q))a.push(`<div class="item"><h3>Class ${c} • ${s} • ${t}</h3><p>${note(t,c,s)}</p></div>`)})));page.innerHTML=`<button class="btn back" onclick="goHome()">← Back</button><h2>Search Results</h2>${a.length?`<div class="list">${a.slice(0,50).join("")}</div>`:`<div class="item"><h3>No result found</h3><p>Try Science, Mathematics, Electricity, Grammar, Class 10, etc.</p></div>`}`}
+function goHome(){home.classList.remove("hidden");page.classList.add("hidden");search.value="";scrollTo(0,0)}
+renderClasses();search.addEventListener("keydown",e=>{if(e.key==="Enter")searchNow()});
+</script></body></html>
