@@ -1,94 +1,970 @@
-<!doctype html>
-<html lang="en"><head>
-  <meta name="google-site-verification" content="sWTvQiQaJcIUJZ6LOz5LONxHfPGgtCcjFRKgHVPOZ9Y" />
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#050505"><title>Study Hub 6-10 | JKBOSE</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+<title>Study Hub 6-10 | JKBOSE</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;background:#050505;color:#f5f5f5;font-family:system-ui,Arial}
-header{position:sticky;top:0;background:#090909;border-bottom:1px solid #292929;padding:16px;z-index:5}
-.wrap{max-width:900px;margin:auto;padding:16px}.logo{font-size:25px;font-weight:800}.sub{color:#aaa;font-size:13px}
-.search{display:flex;gap:8px;margin:15px 0}.search input{flex:1;background:#171717;color:white;border:1px solid #333;border-radius:12px;padding:13px;font-size:16px}
-button{cursor:pointer}.btn{background:white;color:#050505;border:0;border-radius:10px;padding:11px 14px;font-weight:700}
-.hero,.card,.item,.quiz{background:#111;border:1px solid #292929;border-radius:16px}.hero{padding:20px}.hero h1{margin:0 0 6px}.muted{color:#aaa}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}.card{padding:15px}.card h3{margin:0 0 5px}.card p{margin:0;color:#aaa;font-size:12px}
-.section{margin:20px 0}.list{display:grid;gap:10px}.item,.quiz{padding:15px}.item h3{margin:0 0 6px}.item p{line-height:1.5;color:#ccc}
-.hidden{display:none}.back{background:#171717;color:white;border:1px solid #333;margin-bottom:12px}.quiz button{display:block;width:100%;text-align:left;background:#181818;color:white;border:1px solid #333;border-radius:10px;padding:11px;margin:7px 0}.ok{background:#303030!important}.no{opacity:.65}
-footer{text-align:center;color:#777;padding:30px}
-</style></head><body>
-<header><div class="wrap" style="padding:0"><div class="logo">Study Hub 6-10</div><div class="sub">JKBOSE • Classes 6 to 10 • All-in-one study companion</div></div></header>
-<div class="wrap">
-<div class="search"><input id="search" placeholder="Search class, subject, chapter or topic"><button class="btn" onclick="searchNow()">Search</button></div>
-<div id="home"><div class="hero"><h1>Learn. Practice. Improve.</h1><p class="muted">Choose your class to explore subjects, revision notes and MCQs.</p></div>
-<div class="section"><h2>Choose Class</h2><div id="classes" class="grid"></div></div>
-<div class="section"><h2>Quick Access</h2><div class="grid">
-<div class="card" onclick="quiz()"><h3>📝 MCQ Quiz</h3><p>Practice questions</p></div>
-<div class="card" onclick="notes()"><h3>📚 Revision Notes</h3><p>Short notes</p></div>
-<div class="card" onclick="allSubjects()"><h3>📖 Subjects</h3><p>All subjects</p></div>
-</div></div></div>
-<div id="page" class="hidden"></div><footer>Study Hub 6-10 • Original study material • JKBOSE-focused</footer>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#050505;color:#f5f5f5;
+ font-family:Arial,system-ui,sans-serif;
+}
+header{
+ position:sticky;top:0;z-index:10;
+ background:#090909;border-bottom:1px solid #292929;
+ padding:16px;
+}
+.wrap{max-width:950px;margin:auto;padding:16px}
+.logo{font-size:26px;font-weight:800}
+.sub{color:#aaa;font-size:13px;margin-top:4px}
+
+.search{
+ display:flex;gap:8px;margin:15px 0;
+}
+.search input{
+ flex:1;background:#171717;color:white;
+ border:1px solid #333;border-radius:12px;
+ padding:13px;font-size:16px;
+}
+button{
+ cursor:pointer;
+}
+.btn{
+ background:white;color:#050505;
+ border:0;border-radius:10px;
+ padding:11px 15px;font-weight:700;
+}
+.darkbtn{
+ background:#181818;color:white;
+ border:1px solid #333;
+ border-radius:10px;padding:11px 15px;
+}
+.hero,.card,.item,.quiz{
+ background:#111;border:1px solid #292929;
+ border-radius:16px;
+}
+.hero{padding:22px}
+.hero h1{margin:0 0 8px}
+.muted{color:#aaa}
+.section{margin:22px 0}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+ gap:10px;
+}
+.card{
+ padding:17px;
+ transition:.15s;
+}
+.card:hover{
+ border-color:#777;
+ transform:translateY(-2px);
+}
+.card h3{margin:0 0 7px}
+.card p{margin:0;color:#aaa;font-size:13px}
+.list{display:grid;gap:10px}
+.item{
+ padding:17px;
+ cursor:pointer;
+}
+.item:hover{border-color:#777}
+.item h3{margin:0 0 8px}
+.item p{
+ line-height:1.65;
+ color:#ccc;
+ white-space:pre-line;
+}
+.back{margin-bottom:14px}
+.hidden{display:none}
+
+.tabs{
+ display:flex;gap:8px;
+ overflow:auto;margin:15px 0;
+}
+.tab{
+ white-space:nowrap;
+ background:#181818;color:white;
+ border:1px solid #333;
+ padding:10px 14px;border-radius:10px;
+}
+.tab.active{
+ background:white;color:black;
+}
+
+.noteBox{
+ background:#101010;
+ border:1px solid #292929;
+ border-radius:14px;
+ padding:18px;
+ line-height:1.7;
+}
+.noteBox h3{margin-top:0}
+
+.question{
+ background:#111;
+ border:1px solid #292929;
+ border-radius:14px;
+ padding:16px;
+ margin:10px 0;
+}
+.option{
+ display:block;width:100%;
+ text-align:left;
+ background:#181818;color:white;
+ border:1px solid #333;
+ border-radius:10px;
+ padding:12px;
+ margin:8px 0;
+}
+.option.correct{
+ background:#263526;
+}
+.option.wrong{
+ background:#352626;
+}
+.option:disabled{cursor:default}
+
+.score{
+ text-align:center;
+ background:#111;
+ border:1px solid #292929;
+ border-radius:18px;
+ padding:25px;
+ margin-bottom:15px;
+}
+.scoreNumber{
+ font-size:45px;font-weight:800;
+}
+
+footer{
+ text-align:center;color:#777;
+ padding:35px 10px;
+}
+.small{
+ font-size:12px;color:#888;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="wrap" style="padding:0">
+<div class="logo">Study Hub 6-10</div>
+<div class="sub">JKBOSE • Classes 6 to 10 • All Subjects</div>
 </div>
+</header>
+
+<div class="wrap">
+
+<div class="search">
+<input id="search" placeholder="Search class, subject or lesson...">
+<button class="btn" onclick="searchNow()">Search</button>
+</div>
+
+<div id="home">
+
+<div class="hero">
+<h1>Learn. Practice. Improve.</h1>
+<p class="muted">
+Choose your class and subject to study lessons, notes,
+important questions and MCQs.
+</p>
+</div>
+
+<div class="section">
+<h2>📚 Select Your Class</h2>
+<div id="classes" class="grid"></div>
+</div>
+
+<div class="section">
+<h2>⚡ Quick Access</h2>
+<div class="grid">
+
+<div class="card" onclick="openAllLessons()">
+<h3>📖 All Lessons</h3>
+<p>Browse lessons from all classes</p>
+</div>
+
+<div class="card" onclick="openQuizHome()">
+<h3>📝 MCQ Quiz</h3>
+<p>Practice your knowledge</p>
+</div>
+
+<div class="card" onclick="openNotesHome()">
+<h3>📚 Notes</h3>
+<p>Revision material</p>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div id="page" class="hidden"></div>
+
+<footer>
+Study Hub 6-10 • JKBOSE-focused study website
+</footer>
+
+</div>
+
 <script>
-const subjects=["Mathematics","Science","English","Hindi","Social Science","Computer","General Knowledge"];
+
+/* =========================
+   SUBJECTS
+========================= */
+
+const subjects=[
+"Mathematics",
+"Science",
+"English",
+"Hindi",
+"Social Science",
+"Computer",
+"General Knowledge"
+];
+
+/* =========================
+   LESSONS
+========================= */
+
 const topics={
-Mathematics:["Number System","Fractions and Decimals","Algebra Basics","Geometry","Mensuration","Data Handling"],
-Science:["Matter and Materials","Living Organisms","Force and Motion","Light and Sound","Electricity","Environment"],
-English:["Grammar","Vocabulary","Reading Comprehension","Writing Skills","Parts of Speech","Tenses"],
-Hindi:["व्याकरण","शब्द भंडार","पठन कौशल","लेखन कौशल","वाक्य रचना","साहित्य अभ्यास"],
-"Social Science":["History","Geography","Civics","Economics","Maps and Resources","Our Society"],
-Computer:["Computer Basics","Internet and Safety","Word Processing","Spreadsheets","Programming Basics","Digital Citizenship"],
-"General Knowledge":["India","World","Science & Technology","Sports","Environment","Important Days"]};
-const notesText={
-"Number System":"Numbers can be represented and compared using place value. Revise natural, whole and integer numbers.",
-"Fractions and Decimals":"Fractions represent parts of a whole. Decimals are another way to represent fractions using powers of ten.",
-"Algebra Basics":"Algebra uses variables, numbers and operations. Learn expressions, like terms and simple equations.",
-"Geometry":"Geometry studies points, lines, angles and shapes. Use diagrams and known properties while solving problems.",
-"Mensuration":"Mensuration deals with perimeter, area and volume. Always write the correct unit.",
-"Data Handling":"Organise data in tables and graphs. Mean is the sum of observations divided by their number.",
-"Matter and Materials":"Matter has mass and occupies space. Materials have different physical properties.",
-"Living Organisms":"Living things carry out life processes such as nutrition, respiration, growth and reproduction.",
-"Force and Motion":"A force can change motion or direction. Speed is distance travelled per unit time.",
-"Light and Sound":"Light can be reflected or refracted. Sound is produced by vibrations.",
-"Electricity":"A simple electric circuit needs a source, conducting path and suitable components.",
-"Environment":"An ecosystem contains living organisms and their surroundings. Conservation protects resources and biodiversity.",
-"Grammar":"Grammar gives rules for clear sentences. Revise parts of speech, sentence structure and common errors.",
-"Vocabulary":"Build vocabulary through reading, context, synonyms, antonyms and word families.",
-"Reading Comprehension":"Read carefully, identify the main idea and answer using evidence from the passage.",
-"Writing Skills":"Good writing has a clear purpose, logical order, correct grammar and suitable vocabulary.",
-"Parts of Speech":"Nouns, pronouns, verbs, adjectives, adverbs, prepositions and conjunctions are common parts of speech.",
-"Tenses":"Tense shows the time of an action. Practise common present, past and future forms.",
-"व्याकरण":"हिंदी व्याकरण भाषा को शुद्ध और स्पष्ट बनाने के नियमों का अध्ययन है।",
-"शब्द भंडार":"नए शब्दों के अर्थ, पर्यायवाची और विलोम शब्द सीखें और वाक्यों में प्रयोग करें।",
-"पठन कौशल":"गद्यांश पढ़कर मुख्य विचार और आवश्यक जानकारी पहचानें।",
-"लेखन कौशल":"लेखन में विषय की स्पष्टता, क्रम, सही वर्तनी और उचित भाषा रखें।",
-"वाक्य रचना":"वाक्य शब्दों का ऐसा समूह है जो पूरा अर्थ देता है। सरल और संयुक्त वाक्यों का अभ्यास करें।",
-"साहित्य अभ्यास":"कहानी या कविता में पात्र, भाव, मुख्य विचार और संदेश पर ध्यान दें।",
-"History":"History studies change over time using evidence such as texts, monuments and other sources.",
-"Geography":"Geography studies places, people and relationships between humans and the physical environment.",
-"Civics":"Civics explains communities, government, rights and responsibilities.",
-"Economics":"Economics studies how people use limited resources to satisfy needs and wants.",
-"Maps and Resources":"Maps use symbols, scale and directions. Natural resources should be used carefully.",
-"Our Society":"Society includes people, institutions and relationships. Cooperation helps communities.",
-"Computer Basics":"Computer systems use hardware and software to process information.",
-"Internet and Safety":"Protect passwords and private information. Check links and information before using or sharing them.",
-"Word Processing":"Word processors help create, edit and format documents.",
-"Spreadsheets":"Spreadsheets organise data in rows and columns and can use formulas for calculations.",
-"Programming Basics":"Programs are sets of instructions. Algorithms, variables, conditions and loops are basic concepts.",
-"Digital Citizenship":"Responsible digital citizens protect privacy and communicate respectfully.",
-"India":"India has diverse languages, regions, traditions and natural landscapes.",
-"World":"Revise continents, oceans, countries, capitals and basic world geography.",
-"Science & Technology":"Science uses observation, testing and evidence; technology applies knowledge to practical problems.",
-"Sports":"Sports develop skills such as teamwork, discipline and coordination.",
-"Important Days":"Important days highlight themes such as education, environment, science and human rights."};
-function note(t,c,s){return notesText[t]||("Class "+c+" "+s+" revision topic: "+t+". Make short notes and practise questions.")}
-function renderClasses(){classes.innerHTML=[6,7,8,9,10].map(c=>`<div class="card" onclick="showClass(${c})"><h3>Class ${c}</h3><p>7 subjects</p></div>`).join("")}
-function showClass(c){home.classList.add("hidden");page.classList.remove("hidden");page.innerHTML=`<button class="btn back" onclick="goHome()">← Back</button><h2>Class ${c}</h2><div class="grid">${subjects.map(s=>`<div class="card" onclick="showSubject(${c},'${s.replace(/'/g,"\\'")}')"><h3>${s}</h3><p>6 topics</p></div>`).join("")}</div>`}
-function showSubject(c,s){page.innerHTML=`<button class="btn back" onclick="showClass(${c})">← Class ${c}</button><h2>${s}</h2><div class="list">${topics[s].map((t,i)=>`<div class="item"><h3>${i+1}. ${t}</h3><p>${note(t,c,s)}</p></div>`).join("")}</div>`}
-function notes(){home.classList.add("hidden");page.classList.remove("hidden");let a=[];[6,7,8,9,10].forEach(c=>subjects.slice(0,4).forEach(s=>topics[s].slice(0,2).forEach(t=>a.push(`<div class="item"><h3>Class ${c} • ${s} • ${t}</h3><p>${note(t,c,s)}</p></div>`))));page.innerHTML=`<button class="btn back" onclick="goHome()">← Back</button><h2>Revision Notes</h2><div class="list">${a.join("")}</div>`}
-function allSubjects(){home.classList.add("hidden");page.classList.remove("hidden");page.innerHTML=`<button class="btn back" onclick="goHome()">← Back</button><h2>All Subjects</h2><div class="grid">${subjects.map(s=>`<div class="card"><h3>${s}</h3><p>Classes 6-10</p></div>`).join("")}</div>`}
-const qs=[["What is an input device?","Keyboard"],["A simple electric circuit needs a complete path for current.","True"],["Which is a part of speech?","Verb"],["What can a force change?","Motion or direction"],["What protects biodiversity?","Conservation"],["A spreadsheet uses rows and columns.","True"]];
-function quiz(){home.classList.add("hidden");page.classList.remove("hidden");page.innerHTML=`<button class="btn back" onclick="goHome()">← Back</button><h2>MCQ Quiz</h2>${qs.map((q,i)=>`<div class="quiz"><b>${i+1}. ${q[0]}</b><button onclick="check(this,true)">${q[1]}</button><button onclick="check(this,false)">Other answer</button></div>`).join("")}`}
-function check(b,ok){b.classList.add(ok?"ok":"no");b.parentElement.querySelectorAll("button").forEach(x=>x.disabled=true)}
-function searchNow(){let q=search.value.trim().toLowerCase();home.classList.add("hidden");page.classList.remove("hidden");if(!q){goHome();return}let a=[];[6,7,8,9,10].forEach(c=>subjects.forEach(s=>topics[s].forEach(t=>{if((s+" "+t+" "+note(t,c,s)).toLowerCase().includes(q))a.push(`<div class="item"><h3>Class ${c} • ${s} • ${t}</h3><p>${note(t,c,s)}</p></div>`)})));page.innerHTML=`<button class="btn back" onclick="goHome()">← Back</button><h2>Search Results</h2>${a.length?`<div class="list">${a.slice(0,50).join("")}</div>`:`<div class="item"><h3>No result found</h3><p>Try Science, Mathematics, Electricity, Grammar, Class 10, etc.</p></div>`}`}
-function goHome(){home.classList.remove("hidden");page.classList.add("hidden");search.value="";scrollTo(0,0)}
-renderClasses();search.addEventListener("keydown",e=>{if(e.key==="Enter")searchNow()});
-</script></body></html>
+
+Mathematics:[
+"Number System",
+"Fractions and Decimals",
+"Algebra Basics",
+"Geometry",
+"Mensuration",
+"Data Handling"
+],
+
+Science:[
+"Matter and Materials",
+"Living Organisms",
+"Force and Motion",
+"Light and Sound",
+"Electricity",
+"Environment"
+],
+
+English:[
+"Grammar",
+"Vocabulary",
+"Reading Comprehension",
+"Writing Skills",
+"Parts of Speech",
+"Tenses"
+],
+
+Hindi:[
+"व्याकरण",
+"शब्द भंडार",
+"पठन कौशल",
+"लेखन कौशल",
+"वाक्य रचना",
+"साहित्य अभ्यास"
+],
+
+"Social Science":[
+"History",
+"Geography",
+"Civics",
+"Economics",
+"Environment and Society",
+"Map Skills"
+],
+
+Computer:[
+"Computer Fundamentals",
+"Operating Systems",
+"Internet Basics",
+"Word Processing",
+"Spreadsheets",
+"Programming Basics"
+],
+
+"General Knowledge":[
+"India",
+"World",
+"Science and Technology",
+"Sports",
+"Important Days",
+"General Awareness"
+]
+
+};
+
+/* =========================
+   NOTES
+========================= */
+
+const lessonData={
+
+"Number System":{
+notes:`Numbers are used to count, measure and compare quantities.
+
+Important points:
+• Natural numbers are counting numbers.
+• Whole numbers include zero.
+• Integers include positive numbers, negative numbers and zero.
+• Fractions represent parts of a whole.
+• Decimals are another way of representing fractions.
+
+Example:
+5 + 7 = 12
+18 - 9 = 9`,
+questions:[
+"Define a whole number.",
+"What is the difference between natural numbers and whole numbers?",
+"Give two examples of integers.",
+"What is a fraction?"
+],
+mcq:[
+["Which is the smallest whole number?","0",["0","1","-1","10"]],
+["Which of these is an integer?","-5",["2.5","-5","1/2","0.5"]],
+["What is 5 + 7?","12",["10","11","12","13"]]
+]
+},
+
+"Fractions and Decimals":{
+notes:`A fraction represents a part of a whole.
+
+A fraction has:
+• Numerator — number above the line.
+• Denominator — number below the line.
+
+Decimals use a decimal point to represent parts of a whole.
+
+Example:
+1/2 = 0.5
+1/4 = 0.25`,
+questions:[
+"What is a fraction?",
+"What is the numerator?",
+"What is the denominator?",
+"Convert 1/2 into decimal form."
+],
+mcq:[
+["Which is equal to 1/2?","0.5",["0.2","0.25","0.5","1.5"]],
+["In 3/5, what is 5?","Denominator",["Numerator","Denominator","Integer","Decimal"]]
+]
+},
+
+"Algebra Basics":{
+notes:`Algebra uses letters and symbols to represent unknown values.
+
+Examples:
+x + 5
+2x + 3
+a - 7
+
+A variable is a letter whose value can change.
+A constant has a fixed value.
+
+Example:
+If x = 4, then x + 3 = 7.`,
+questions:[
+"What is a variable?",
+"What is a constant?",
+"Evaluate x + 3 when x = 4.",
+"Give one algebraic expression."
+],
+mcq:[
+["Which can represent an unknown value?","Variable",["Variable","Constant","Unit","Angle"]],
+["If x = 4, x + 3 equals?","7",["5","6","7","8"]]
+]
+},
+
+"Geometry":{
+notes:`Geometry is the study of shapes, sizes, lines and angles.
+
+Important terms:
+• Point
+• Line
+• Line segment
+• Ray
+• Angle
+• Triangle
+• Quadrilateral
+
+Angles may be classified as acute, right, obtuse and straight angles.`,
+questions:[
+"What is a line segment?",
+"What is a right angle?",
+"Name two types of angles.",
+"What is a triangle?"
+],
+mcq:[
+["A right angle measures:","90°",["45°","60°","90°","180°"]],
+["A triangle has how many sides?","3",["2","3","4","5"]]
+]
+},
+
+"Mensuration":{
+notes:`Mensuration deals with measurement of geometric figures.
+
+Common measurements include:
+• Length
+• Perimeter
+• Area
+• Volume
+
+Rectangle:
+Perimeter = 2 × (length + breadth)
+Area = length × breadth
+
+Always use appropriate units.`,
+questions:[
+"What is perimeter?",
+"Write the area formula of a rectangle.",
+"Write the perimeter formula of a rectangle.",
+"Why are units important?"
+],
+mcq:[
+["Area of a rectangle is:","length × breadth",["length + breadth","2(length+breadth)","length × breadth","length-breadth"]]
+]
+},
+
+"Data Handling":{
+notes:`Data is a collection of information.
+
+Data can be represented using:
+• Tables
+• Bar graphs
+• Line graphs
+• Pictographs
+
+Organising data makes it easier to understand and compare.`,
+questions:[
+"What is data?",
+"Name two ways to represent data.",
+"What is a bar graph?",
+"Why do we organise data?"
+],
+mcq:[
+["Which can represent data?","Bar graph",["Bar graph","Sentence only","Paragraph only","None"]]
+]
+},
+
+"Matter and Materials":{
+notes:`Matter is anything that has mass and occupies space.
+
+The common states of matter are:
+• Solid
+• Liquid
+• Gas
+
+Solids have a definite shape.
+Liquids have a definite volume but take the shape of their container.
+Gases spread to fill their container.
+
+Heating and cooling can change the state of matter.`,
+questions:[
+"What is matter?",
+"Name three states of matter.",
+"Give one property of a solid.",
+"How can matter change its state?"
+],
+mcq:[
+["Which has a definite shape?","Solid",["Gas","Liquid","Solid","None"]],
+["Water can exist as:","Solid, liquid and gas",["Only solid","Only liquid","Only gas","Solid, liquid and gas"]]
+]
+},
+
+"Living Organisms":{
+notes:`Living organisms perform life processes such as nutrition, respiration, growth and reproduction.
+
+Plants make food by photosynthesis.
+Animals obtain food from plants or other organisms.
+
+Cells are the basic structural units of living organisms.`,
+questions:[
+"What is a living organism?",
+"Name two life processes.",
+"What is photosynthesis?",
+"What is a cell?"
+],
+mcq:[
+["Plants prepare food by:","Photosynthesis",["Respiration","Photosynthesis","Digestion","Filtration"]]
+]
+},
+
+"Force and Motion":{
+notes:`A force is a push or pull.
+
+Force can change:
+• Motion
+• Direction
+• Speed
+• Shape of an object
+
+Motion describes a change in position with time.
+
+Examples of force include pushing a door and pulling a bag.`,
+questions:[
+"What is force?",
+"Give one example of a push.",
+"Give one example of a pull.",
+"What is motion?"
+],
+mcq:[
+["Force can be described as a:","Push or pull",["Colour","Push or pull","Temperature","Sound"]]
+]
+},
+
+"Light and Sound":{
+notes:`Light helps us see objects.
+
+Some objects produce their own light and are called luminous objects.
+
+Sound is produced by vibrations.
+Sound needs a medium to travel.
+
+Light generally travels in straight lines.`,
+questions:[
+"What is light?",
+"What produces sound?",
+"Does sound need a medium?",
+"Give one luminous object."
+],
+mcq:[
+["Sound is produced by:","Vibrations",["Heat","Vibrations","Light","Pressure only"]],
+["Light helps us to:","See",["Sleep","See","Eat","Measure mass"]]
+]
+},
+
+"Electricity":{
+notes:`Electricity is a form of energy used in many devices.
+
+A simple electric circuit generally contains:
+• Cell or battery
+• Connecting wires
+• Switch
+• Electrical device
+
+A complete circuit allows electric current to flow.`,
+questions:[
+"What is an electric circuit?",
+"Name two parts of a simple circuit.",
+"What is the function of a switch?",
+"When can current flow in a simple circuit?"
+],
+mcq:[
+["A switch is used to:","Open or close a circuit",["Produce water","Open or close a circuit","Measure mass","Make sound only"]]
+]
+},
+
+"Environment":{
+notes:`The environment includes living and non-living components around us.
+
+Living components include plants, animals and microorganisms.
+Non-living components include air, water, soil and sunlight.
+
+Pollution can harm organisms and ecosystems.
+Conservation helps protect natural resources.`,
+questions:[
+"What is environment?",
+"Name two non-living components.",
+"What is pollution?",
+"Why is conservation important?"
+],
+mcq:[
+["Which is a non-living component?","Water",["Tree","Animal","Water","Bird"]]
+]
+},
+
+"Grammar":{
+notes:`Grammar provides rules for using language correctly.
+
+Important areas include:
+• Nouns
+• Pronouns
+• Verbs
+• Adjectives
+• Adverbs
+• Tenses
+• Articles
+• Prepositions
+
+Correct grammar improves communication.`,
+questions:[
+"What is grammar?",
+"What is a noun?",
+"What is a verb?",
+"Why is grammar important?"
+],
+mcq:[
+["Which is a part of speech?","Verb",["Verb","Paragraph","Page","Chapter"]]
+]
+},
+
+"Vocabulary":{
+notes:`Vocabulary means the collection of words known and used by a person.
+
+Vocabulary can be improved by:
+• Reading regularly
+• Learning new words
+• Using a dictionary
+• Making sentences
+• Revising words frequently.`,
+questions:[
+"What is vocabulary?",
+"How can vocabulary be improved?",
+"What is a synonym?",
+"What is an antonym?"
+],
+mcq:[
+["A word with similar meaning is a:","Synonym",["Antonym","Synonym","Pronoun","Verb"]]
+]
+},
+
+"Reading Comprehension":{
+notes:`Reading comprehension means understanding information from a passage.
+
+Good readers:
+• Read carefully.
+• Identify the main idea.
+• Look for important details.
+• Understand unfamiliar words from context.
+• Answer questions using evidence from the passage.`,
+questions:[
+"What is reading comprehension?",
+"What is the main idea?",
+"Why should we read carefully?",
+"How can context help with vocabulary?"
+],
+mcq:[
+["Reading comprehension focuses on:","Understanding a passage",["Drawing only","Understanding a passage","Writing numbers","Memorising dates only"]]
+]
+},
+
+"Writing Skills":{
+notes:`Good writing should be clear, organised and appropriate for the purpose.
+
+Common forms include:
+• Paragraph writing
+• Letter writing
+• Applications
+• Essays
+• Notices
+
+A good paragraph usually has a clear topic and supporting ideas.`,
+questions:[
+"What makes writing effective?",
+"Name two forms of writing.",
+"What is a paragraph?",
+"Why is organisation important?"
+],
+mcq:[
+["A good paragraph should have:","A clear idea",["No idea","A clear idea","Only numbers","Only questions"]]
+]
+},
+
+"Parts of Speech":{
+notes:`Parts of speech describe the role of words in a sentence.
+
+Common parts include:
+• Noun
+• Pronoun
+• Verb
+• Adjective
+• Adverb
+• Preposition
+• Conjunction
+• Interjection`,
+questions:[
+"What is a noun?",
+"What is a verb?",
+"What is an adjective?",
+"Name four parts of speech."
+],
+mcq:[
+["A word showing an action is often a:","Verb",["Noun","Verb","Article","Preposition"]]
+]
+},
+
+"Tenses":{
+notes:`Tense tells us the time of an action.
+
+The three basic tenses are:
+• Present
+• Past
+• Future
+
+Examples:
+Present: I study.
+Past: I studied.
+Future: I will study.`,
+questions:[
+"What does tense show?",
+"Name the three basic tenses.",
+"Give one present tense example.",
+"Give one future tense example."
+],
+mcq:[
+["'I studied' is in the:","Past tense",["Present tense","Past tense","Future tense","None"]]
+]
+},
+
+"व्याकरण":{
+notes:`व्याकरण भाषा को सही ढंग से बोलने और लिखने के नियमों का अध्ययन है।
+
+मुख्य विषय:
+• संज्ञा
+• सर्वनाम
+• क्रिया
+• विशेषण
+• काल
+• वचन
+• लिंग
+• वाक्य रचना
+
+सही व्याकरण भाषा को स्पष्ट बनाता है।`,
+questions:[
+"व्याकरण क्या है?",
+"संज्ञा क्या है?",
+"क्रिया क्या है?",
+"सर्वनाम क्या है?"
+],
+mcq:[
+["व्याकरण किससे संबंधित है?","भाषा के सही प्रयोग से",["केवल गणित से","भाषा के सही प्रयोग से","केवल विज्ञान से","केवल चित्रों से"]]
+]
+},
+
+"शब्द भंडार":{
+notes:`शब्द भंडार का अर्थ भाषा में उपलब्ध और प्रयोग किए जाने वाले शब्दों का ज्ञान है।
+
+शब्द भंडार बढ़ाने के लिए:
+• नियमित पढ़ें।
+• नए शब्द लिखें।
+• शब्दों के अर्थ सीखें।
+• वाक्य बनाएं।
+• पुनरावृत्ति करें।`,
+questions:[
+"शब्द भंडार क्या है?",
+"शब्द भंडार कैसे बढ़ाया जा सकता है?",
+"पर्यायवाची शब्द क्या हैं?",
+"विलोम शब्द क्या हैं?"
+],
+mcq:[
+["समान अर्थ वाले शब्द कहलाते हैं:","पर्यायवाची",["विलोम","पर्यायवाची","संज्ञा","क्रिया"]]
+]
+},
+
+"पठन कौशल":{
+notes:`पठन कौशल का अर्थ लिखित सामग्री को सही ढंग से पढ़कर उसका अर्थ समझना है।
+
+अच्छे पठन के लिए:
+• ध्यान से पढ़ें।
+• मुख्य विचार पहचानें।
+• महत्वपूर्ण जानकारी खोजें।
+• कठिन शब्दों का अर्थ संदर्भ से समझें।`,
+questions:[
+"पठन कौशल क्या है?",
+"मुख्य विचार क्या होता है?",
+"ध्यान से पढ़ना क्यों जरूरी है?"
+],
+mcq:[
+["पठन का मुख्य उद्देश्य क्या है?","अर्थ समझना",["केवल तेज पढ़ना","अर्थ समझना","केवल लिखना","केवल बोलना"]]
+]
+},
+
+"लेखन कौशल":{
+notes:`लेखन कौशल विचारों को स्पष्ट और व्यवस्थित रूप से लिखने की क्षमता है।
+
+अच्छे लेखन में:
+• स्पष्ट विचार
+• सही भाषा
+• उचित क्रम
+• सही वर्तनी
+• उचित विराम चिह्न शामिल होते हैं।`,
+questions:[
+"लेखन कौशल क्या है?",
+"अच्छे लेखन की दो विशेषताएं बताइए।",
+"विराम चिह्न क्यों जरूरी हैं?"
+],
+mcq:[
+["अच्छे लेखन में क्या जरूरी है?","स्पष्ट विचार",["अव्यवस्था","स्पष्ट विचार","गलत वर्तनी","कोई क्रम नहीं"]]
+]
+},
+
+"वाक्य रचना":{
+notes:`वाक्य शब्दों का ऐसा व्यवस्थित समूह है जो पूरा अर्थ प्रकट करता है।
+
+वाक्य में शब्दों का सही क्रम और उचित प्रयोग जरूरी है।
+
+उदाहरण:
+राम स्कूल जाता है।
+यह एक पूर्ण अर्थ वाला वाक्य है।`,
+questions:[
+"वाक्य क्या है?",
+"वाक्य में शब्दों का क्रम क्यों महत्वपूर्ण है?",
+"एक उदाहरण लिखिए।"
+],
+mcq:[
+["पूर्ण अर्थ प्रकट करने वाला शब्द समूह क्या है?","वाक्य",["अक्षर","वाक्य","ध्वनि","मात्रा"]]
+]
+},
+
+"साहित्य अभ्यास":{
+notes:`साहित्य में कविता, कहानी, नाटक और अन्य रचनात्मक विधाएं शामिल होती हैं।
+
+साहित्य पढ़ते समय:
+• मुख्य विचार समझें।
+• पात्रों को पहचानें।
+• घटनाओं का क्रम समझें।
+• नए शब्दों के अर्थ देखें।`,
+questions:[
+"साहित्य क्या है?",
+"कहानी के पात्र कौन होते हैं?",
+"साहित्य पढ़ने से क्या लाभ होता है?"
+],
+mcq:[
+["साहित्य में क्या शामिल हो सकता है?","कविता",["कविता","केवल गणित","केवल मानचित्र","केवल संख्या"]]
+]
+},
+
+"History":{
+notes:`History is the study of past events, people, societies and changes.
+
+Historical study uses evidence such as:
+• Written records
+• Inscriptions
+• Coins
+• Buildings
+• Artefacts
+
+History helps us understand how societies changed over time.`,
+questions:[
+"What is history?",
+"Name two sources of history.",
+"Why do we study history?",
+"What is an inscription?"
+],
+mcq:[
+["Which can be a historical source?","Coins",["Coins","Only weather","Only electricity","Only sports"]]
+]
+},
+
+"Geography":{
+notes:`Geography studies the Earth, places, people and the relationship between humans and their environment.
+
+Important areas include:
+• Landforms
+• Climate
+• Rivers
+• Resources
+• Population
+• Maps`,
+questions:[
+"What is geography?",
+"What is a map?",
+"Name two natural resources.",
+"What is climate?"
+],
+mcq:[
+["Geography studies:","Earth and places",["Only numbers","Earth and places","Only grammar","Only computers"]]
+]
+},
+
+"Civics":{
+notes:`Civics is the study of government, citizenship, rights and responsibilities.
+
+A responsible citizen:
+• Respects laws.
+• Respects other people.
+• Protects public property.
+• Participates responsibly in society.`,
+questions:[
+"What is civics?",
+"Who is a citizen?",
+"Name one responsibility of a citizen.",
+"Why are laws important?"
+],
+mcq:[
+["A responsible citizen should:","Respect laws",["Break laws","Respect laws","Damage public property","Ignore others"]]
+]
+},
+
+"Economics":{
+notes:`Economics studies how people use resources to satisfy needs and wants.
+
+Important concepts include:
+• Needs
+• Wants
+• Goods
+• Services
+• Production
+• Consumption
+• Saving`,
+questions:[
+"What is economics?",
+"What is a need?",
+"What is a want?",
+"What is a service?"
+],
+mcq:[
+["Which is generally a basic need?","Food",["Food","Luxury item","Game score","Decoration"]]
+]
+},
+
+"Environment and Society":{
+notes:`People and the environment are closely connected.
+
+Human activities can affect air, water, soil, forests and wildlife.
+
+Sustainable practices include:
+• Saving water
+• Reducing waste
+• Protecting forests
+• Using resources carefully`,
+questions:[
+"How are society and environment connected?",
+"Name two ways to protect the environment.",
+"What is conservation?"
+],
+mcq:[
+["Which helps the environment?","Saving water",["Wasting water","Saving water","Littering","Cutting forests unnecessarily"]]
+]
+},
+
+"Map Skills":{
+notes:`Maps represent places on a smaller scale.
+
+Important map elements include:
+• Title
+• Direction
+• Scale
+• Symbols
+• Legend
+
+Maps help us locate and understand places.`,
+questions:[
+"What is a map?",
+"What is scale?",
+"What is a map symbol?",
+"Name four elements of a map."
+],
+mcq:[
+["A map can show:","Locations",["Locations","Only sounds","Only grammar","Only equations"]]
+]
+},
+
+"Computer Fundamentals":{
+notes:`A computer is an electronic device that accepts data, processes it and produces information.
+
+Basic components include:
+• Input devices
+• CPU
+• Memory
+• Storage
+• Output devices
+
+Keyboard and mouse are common input devices.`,
+questions:[
+"What
