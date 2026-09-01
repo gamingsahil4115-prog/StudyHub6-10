@@ -2,149 +2,429 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="google-site-verification" content="sWTvQiQaJcIUJZ6LOz5LONxHfPGgtCcjFRKgHVPOZ9Y">
+
 <meta name="theme-color" content="#050505">
 <title>Study Hub 6-10 | JKBOSE</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
 body{
- margin:0;background:#050505;color:#f5f5f5;
- font-family:Arial,system-ui,sans-serif;
+margin:0;
+background:#050505;
+color:#f5f5f5;
+font-family:Arial,system-ui,sans-serif;
 }
+
+button{
+font-family:inherit;
+cursor:pointer;
+}
+
 header{
- position:sticky;top:0;z-index:10;
- background:#090909;border-bottom:1px solid #292929;
- padding:16px;
+position:sticky;
+top:0;
+z-index:20;
+background:#090909;
+border-bottom:1px solid #292929;
 }
-.wrap{max-width:950px;margin:auto;padding:16px}
-.logo{font-size:26px;font-weight:800}
-.sub{color:#aaa;font-size:13px;margin-top:4px}
+
+.header-inner{
+max-width:1000px;
+margin:auto;
+padding:18px;
+}
+
+.logo{
+font-size:27px;
+font-weight:800;
+}
+
+.logo span{
+color:#ffd54a;
+}
+
+.subtitle{
+color:#aaa;
+font-size:13px;
+margin-top:5px;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:16px;
+}
 
 .search{
- display:flex;gap:8px;margin:15px 0;
+display:flex;
+gap:8px;
+margin-bottom:20px;
 }
+
 .search input{
- flex:1;background:#171717;color:white;
- border:1px solid #333;border-radius:12px;
- padding:13px;font-size:16px;
+flex:1;
+background:#151515;
+border:1px solid #333;
+color:white;
+border-radius:12px;
+padding:14px;
+font-size:16px;
+outline:none;
 }
-button{
- cursor:pointer;
+
+.search button{
+background:#ffd54a;
+border:0;
+border-radius:12px;
+padding:0 18px;
+font-weight:700;
 }
-.btn{
- background:white;color:#050505;
- border:0;border-radius:10px;
- padding:11px 15px;font-weight:700;
+
+.hero{
+background:linear-gradient(135deg,#111,#181818);
+border:1px solid #292929;
+border-radius:18px;
+padding:24px;
+margin-bottom:25px;
 }
-.darkbtn{
- background:#181818;color:white;
- border:1px solid #333;
- border-radius:10px;padding:11px 15px;
+
+.hero h1{
+margin:0 0 8px;
+font-size:30px;
 }
-.hero,.card,.item,.quiz{
- background:#111;border:1px solid #292929;
- border-radius:16px;
+
+.hero p{
+margin:0;
+color:#aaa;
+line-height:1.6;
 }
-.hero{padding:22px}
-.hero h1{margin:0 0 8px}
-.muted{color:#aaa}
-.section{margin:22px 0}
+
+.section{
+margin:25px 0;
+}
+
+.section-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:12px;
+}
+
+.section-title h2{
+margin:0;
+font-size:21px;
+}
+
 .grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
- gap:10px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+gap:12px;
 }
+
 .card{
- padding:17px;
- transition:.15s;
+background:#111;
+border:1px solid #292929;
+border-radius:16px;
+padding:18px;
+transition:.2s;
 }
+
 .card:hover{
- border-color:#777;
- transform:translateY(-2px);
-}
-.card h3{margin:0 0 7px}
-.card p{margin:0;color:#aaa;font-size:13px}
-.list{display:grid;gap:10px}
-.item{
- padding:17px;
- cursor:pointer;
-}
-.item:hover{border-color:#777}
-.item h3{margin:0 0 8px}
-.item p{
- line-height:1.65;
- color:#ccc;
- white-space:pre-line;
-}
-.back{margin-bottom:14px}
-.hidden{display:none}
-
-.tabs{
- display:flex;gap:8px;
- overflow:auto;margin:15px 0;
-}
-.tab{
- white-space:nowrap;
- background:#181818;color:white;
- border:1px solid #333;
- padding:10px 14px;border-radius:10px;
-}
-.tab.active{
- background:white;color:black;
+transform:translateY(-2px);
+border-color:#555;
 }
 
-.noteBox{
- background:#101010;
- border:1px solid #292929;
- border-radius:14px;
- padding:18px;
- line-height:1.7;
+.clickable{
+cursor:pointer;
 }
-.noteBox h3{margin-top:0}
+
+.card h3{
+margin:0 0 7px;
+font-size:17px;
+}
+
+.card p{
+margin:0;
+color:#999;
+font-size:13px;
+line-height:1.5;
+}
+
+.class-card{
+text-align:center;
+padding:22px 10px;
+}
+
+.class-number{
+font-size:30px;
+font-weight:800;
+color:#ffd54a;
+margin-bottom:5px;
+}
+
+.feature-icon{
+font-size:28px;
+margin-bottom:8px;
+}
+
+.hidden{
+display:none!important;
+}
+
+.page{
+margin-top:10px;
+}
+
+.back{
+background:#171717;
+border:1px solid #333;
+color:white;
+border-radius:10px;
+padding:11px 15px;
+margin-bottom:15px;
+}
+
+.page-title{
+font-size:25px;
+margin:5px 0;
+}
+
+.page-subtitle{
+color:#999;
+margin-bottom:20px;
+}
+
+.subject-card{
+min-height:110px;
+}
+
+.subject-icon{
+font-size:25px;
+margin-bottom:8px;
+}
+
+.chapter-list{
+display:grid;
+gap:10px;
+}
+
+.chapter{
+background:#111;
+border:1px solid #292929;
+border-radius:14px;
+padding:16px;
+display:flex;
+align-items:center;
+gap:13px;
+cursor:pointer;
+}
+
+.chapter:hover{
+border-color:#ffd54a;
+}
+
+.chapter-number{
+width:36px;
+height:36px;
+border-radius:50%;
+background:#242424;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:800;
+color:#ffd54a;
+flex-shrink:0;
+}
+
+.chapter-info{
+flex:1;
+}
+
+.chapter-info h3{
+margin:0 0 5px;
+font-size:16px;
+}
+
+.chapter-info p{
+margin:0;
+color:#888;
+font-size:12px;
+}
+
+.arrow{
+font-size:20px;
+color:#777;
+}
+
+.lesson{
+background:#111;
+border:1px solid #292929;
+border-radius:16px;
+padding:20px;
+margin-bottom:14px;
+}
+
+.lesson h2{
+margin-top:0;
+color:#ffd54a;
+}
+
+.lesson h3{
+color:#ffd54a;
+margin-top:24px;
+}
+
+.lesson p,
+.lesson li{
+color:#ddd;
+line-height:1.7;
+}
+
+.lesson ul,
+.lesson ol{
+padding-left:22px;
+}
+
+.formula{
+background:#181818;
+border-left:4px solid #ffd54a;
+padding:14px;
+border-radius:8px;
+margin:12px 0;
+font-family:monospace;
+}
 
 .question{
- background:#111;
- border:1px solid #292929;
- border-radius:14px;
- padding:16px;
- margin:10px 0;
+background:#111;
+border:1px solid #292929;
+border-radius:14px;
+padding:17px;
+margin-bottom:12px;
 }
-.option{
- display:block;width:100%;
- text-align:left;
- background:#181818;color:white;
- border:1px solid #333;
- border-radius:10px;
- padding:12px;
- margin:8px 0;
-}
-.option.correct{
- background:#263526;
-}
-.option.wrong{
- background:#352626;
-}
-.option:disabled{cursor:default}
 
-.score{
- text-align:center;
- background:#111;
- border:1px solid #292929;
- border-radius:18px;
- padding:25px;
- margin-bottom:15px;
+.question h3{
+margin-top:0;
 }
-.scoreNumber{
- font-size:45px;font-weight:800;
+
+.option{
+width:100%;
+background:#181818;
+border:1px solid #333;
+color:white;
+padding:12px;
+border-radius:10px;
+text-align:left;
+margin-top:8px;
+}
+
+.option:hover{
+border-color:#ffd54a;
+}
+
+.correct{
+border-color:#38d27b!important;
+background:#12301f!important;
+}
+
+.wrong{
+border-color:#e05252!important;
+background:#301717!important;
+}
+
+.note-card{
+background:#111;
+border:1px solid #292929;
+border-radius:14px;
+padding:17px;
+margin-bottom:10px;
+}
+
+.note-card h3{
+margin-top:0;
+color:#ffd54a;
+}
+
+.note-card p{
+color:#ccc;
+line-height:1.6;
+}
+
+.empty{
+background:#111;
+border:1px solid #292929;
+border-radius:14px;
+padding:25px;
+text-align:center;
+color:#999;
 }
 
 footer{
- text-align:center;color:#777;
- padding:35px 10px;
+text-align:center;
+color:#777;
+padding:35px 15px;
+margin-top:30px;
+border-top:1px solid #222;
 }
-.small{
- font-size:12px;color:#888;
+
+.badge{
+display:inline-block;
+background:#222;
+border:1px solid #333;
+border-radius:20px;
+padding:5px 10px;
+font-size:12px;
+color:#bbb;
+margin-bottom:10px;
+}
+
+.action-row{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-bottom:18px;
+}
+
+.action{
+background:#222;
+border:1px solid #333;
+color:white;
+border-radius:10px;
+padding:10px 14px;
+}
+
+.action.primary{
+background:#ffd54a;
+color:#050505;
+border-color:#ffd54a;
+font-weight:700;
+}
+
+@media(max-width:600px){
+.logo{
+font-size:23px;
+}
+
+.hero h1{
+font-size:25px;
+}
+
+.search button{
+padding:0 13px;
+}
+
+.container{
+padding:12px;
+}
 }
 </style>
 </head>
@@ -152,51 +432,64 @@ footer{
 <body>
 
 <header>
-<div class="wrap" style="padding:0">
-<div class="logo">Study Hub 6-10</div>
-<div class="sub">JKBOSE • Classes 6 to 10 • All Subjects</div>
+<div class="header-inner">
+<div class="logo">Study Hub <span>6-10</span></div>
+<div class="subtitle">
+JKBOSE • Classes 6 to 10 • All-in-one Study Companion
+</div>
 </div>
 </header>
 
-<div class="wrap">
-
-<div class="search">
-<input id="search" placeholder="Search class, subject or lesson...">
-<button class="btn" onclick="searchNow()">Search</button>
-</div>
+<div class="container">
 
 <div id="home">
 
+<div class="search">
+<input id="searchInput"
+placeholder="Search class, subject, chapter or topic">
+<button onclick="searchSite()">Search</button>
+</div>
+
 <div class="hero">
+<div class="badge">JKBOSE • Class 6 to 10</div>
 <h1>Learn. Practice. Improve.</h1>
-<p class="muted">
-Choose your class and subject to study lessons, notes,
-important questions and MCQs.
+<p>
+Choose your class, select a subject and open any chapter
+to read the lesson, important questions and MCQs.
 </p>
 </div>
 
 <div class="section">
+<div class="section-title">
 <h2>📚 Select Your Class</h2>
-<div id="classes" class="grid"></div>
+</div>
+
+<div class="grid" id="classes"></div>
 </div>
 
 <div class="section">
+<div class="section-title">
 <h2>⚡ Quick Access</h2>
+</div>
+
 <div class="grid">
 
-<div class="card" onclick="openAllLessons()">
-<h3>📖 All Lessons</h3>
-<p>Browse lessons from all classes</p>
+<div class="card clickable" onclick="showAllNotes()">
+<div class="feature-icon">📖</div>
+<h3>Revision Notes</h3>
+<p>Important short notes</p>
 </div>
 
-<div class="card" onclick="openQuizHome()">
-<h3>📝 MCQ Quiz</h3>
-<p>Practice your knowledge</p>
+<div class="card clickable" onclick="showQuiz()">
+<div class="feature-icon">📝</div>
+<h3>MCQ Quiz</h3>
+<p>Practice questions</p>
 </div>
 
-<div class="card" onclick="openNotesHome()">
-<h3>📚 Notes</h3>
-<p>Revision material</p>
+<div class="card clickable" onclick="showAllSubjects()">
+<div class="feature-icon">📚</div>
+<h3>All Subjects</h3>
+<p>Explore subjects</p>
 </div>
 
 </div>
@@ -204,21 +497,17 @@ important questions and MCQs.
 
 </div>
 
-<div id="page" class="hidden"></div>
+<div id="page" class="page hidden"></div>
 
 <footer>
-Study Hub 6-10 • JKBOSE-focused study website
+Study Hub 6-10 • JKBOSE Study Website
 </footer>
 
 </div>
 
 <script>
 
-/* =========================
-   SUBJECTS
-========================= */
-
-const subjects=[
+const subjects = [
 "Mathematics",
 "Science",
 "English",
@@ -228,13 +517,19 @@ const subjects=[
 "General Knowledge"
 ];
 
-/* =========================
-   LESSONS
-========================= */
+const subjectIcons = {
+"Mathematics":"➗",
+"Science":"🔬",
+"English":"📘",
+"Hindi":"📝",
+"Social Science":"🌍",
+"Computer":"💻",
+"General Knowledge":"💡"
+};
 
-const topics={
+const topics = {
 
-Mathematics:[
+"Mathematics":[
 "Number System",
 "Fractions and Decimals",
 "Algebra Basics",
@@ -243,7 +538,7 @@ Mathematics:[
 "Data Handling"
 ],
 
-Science:[
+"Science":[
 "Matter and Materials",
 "Living Organisms",
 "Force and Motion",
@@ -252,7 +547,7 @@ Science:[
 "Environment"
 ],
 
-English:[
+"English":[
 "Grammar",
 "Vocabulary",
 "Reading Comprehension",
@@ -261,7 +556,7 @@ English:[
 "Tenses"
 ],
 
-Hindi:[
+"Hindi":[
 "व्याकरण",
 "शब्द भंडार",
 "पठन कौशल",
@@ -275,696 +570,989 @@ Hindi:[
 "Geography",
 "Civics",
 "Economics",
-"Environment and Society",
-"Map Skills"
+"Maps and Resources",
+"Our Society"
 ],
 
-Computer:[
-"Computer Fundamentals",
-"Operating Systems",
-"Internet Basics",
+"Computer":[
+"Computer Basics",
+"Internet and Safety",
 "Word Processing",
 "Spreadsheets",
-"Programming Basics"
+"Programming Basics",
+"Digital Citizenship"
 ],
 
 "General Knowledge":[
 "India",
 "World",
-"Science and Technology",
+"Science & Technology",
 "Sports",
-"Important Days",
-"General Awareness"
+"Environment",
+"Important Days"
 ]
 
 };
 
-/* =========================
-   NOTES
-========================= */
+const notesText = {
 
-const lessonData={
+"Number System":
+"Numbers can be represented and compared using place value. Natural numbers, whole numbers and integers are important parts of the number system.",
 
-"Number System":{
-notes:`Numbers are used to count, measure and compare quantities.
+"Fractions and Decimals":
+"A fraction represents a part of a whole. Decimals are another way of representing numbers using powers of ten.",
 
-Important points:
-• Natural numbers are counting numbers.
-• Whole numbers include zero.
-• Integers include positive numbers, negative numbers and zero.
-• Fractions represent parts of a whole.
-• Decimals are another way of representing fractions.
+"Algebra Basics":
+"Algebra uses numbers, variables and mathematical operations. Learn expressions, like terms and simple equations.",
 
-Example:
-5 + 7 = 12
-18 - 9 = 9`,
-questions:[
-"Define a whole number.",
-"What is the difference between natural numbers and whole numbers?",
-"Give two examples of integers.",
-"What is a fraction?"
+"Geometry":
+"Geometry deals with points, lines, angles and shapes. Diagrams and properties of shapes are important for solving problems.",
+
+"Mensuration":
+"Mensuration deals with perimeter, area and volume. Always write the correct unit with your answer.",
+
+"Data Handling":
+"Data can be organised using tables and graphs. Mean is calculated by dividing the sum of observations by the number of observations.",
+
+"Matter and Materials":
+"Matter has mass and occupies space. Materials have different physical and chemical properties.",
+
+"Living Organisms":
+"Living organisms perform life processes such as nutrition, respiration, growth and reproduction.",
+
+"Force and Motion":
+"A force can change the motion or direction of an object. Speed is distance travelled per unit time.",
+
+"Light and Sound":
+"Light can be reflected and refracted. Sound is produced by vibrations and travels through a medium.",
+
+"Electricity":
+"A simple electric circuit needs a source, conducting path and suitable electrical components.",
+
+"Environment":
+"An ecosystem contains living organisms and their surroundings. Conservation helps protect natural resources and biodiversity.",
+
+"Grammar":
+"Grammar provides rules for forming clear and correct sentences.",
+
+"Vocabulary":
+"Vocabulary can be improved through reading, learning synonyms and antonyms and using new words in sentences.",
+
+"Reading Comprehension":
+"Read a passage carefully, identify its main idea and answer questions using information from the passage.",
+
+"Writing Skills":
+"Good writing has a clear purpose, logical order, correct grammar and suitable vocabulary.",
+
+"Parts of Speech":
+"Nouns, pronouns, verbs, adjectives, adverbs, prepositions and conjunctions are common parts of speech.",
+
+"Tenses":
+"Tense shows the time of an action. Practise present, past and future forms.",
+
+"व्याकरण":
+"हिंदी व्याकरण भाषा को शुद्ध और स्पष्ट बनाने के नियमों का अध्ययन है।",
+
+"शब्द भंडार":
+"नए शब्दों के अर्थ, पर्यायवाची और विलोम शब्द सीखें और उनका वाक्यों में प्रयोग करें।",
+
+"पठन कौशल":
+"गद्यांश को ध्यान से पढ़कर मुख्य विचार और आवश्यक जानकारी पहचानें।",
+
+"लेखन कौशल":
+"लेखन में विषय की स्पष्टता, सही क्रम, वर्तनी और उचित भाषा का ध्यान रखें।",
+
+"वाक्य रचना":
+"वाक्य शब्दों का ऐसा समूह है जो पूरा अर्थ देता है। सरल और संयुक्त वाक्यों का अभ्यास करें।",
+
+"साहित्य अभ्यास":
+"कहानी या कविता में पात्र, भाव, मुख्य विचार और संदेश को समझने का अभ्यास करें।",
+
+"History":
+"History studies changes over time using evidence such as written records, monuments and other sources.",
+
+"Geography":
+"Geography studies places, people and the relationship between humans and the physical environment.",
+
+"Civics":
+"Civics explains communities, government, rights and responsibilities.",
+
+"Economics":
+"Economics studies how people use limited resources to satisfy needs and wants.",
+
+"Maps and Resources":
+"Maps use symbols, scale and directions. Natural resources should be used carefully.",
+
+"Our Society":
+"Society includes people, institutions and relationships. Cooperation helps communities.",
+
+"Computer Basics":
+"Computer systems use hardware and software to process information.",
+
+"Internet and Safety":
+"Protect passwords and private information. Check links and information before using or sharing them.",
+
+"Word Processing":
+"Word processors help users create, edit and format documents.",
+
+"Spreadsheets":
+"Spreadsheets organise data in rows and columns and can use formulas for calculations.",
+
+"Programming Basics":
+"Programs are sets of instructions. Algorithms, variables, conditions and loops are basic concepts.",
+
+"Digital Citizenship":
+"Responsible digital citizens protect privacy and communicate respectfully.",
+
+"India":
+"India has diverse languages, regions, traditions and natural landscapes.",
+
+"World":
+"Revise continents, oceans, countries, capitals and basic world geography.",
+
+"Science & Technology":
+"Science uses observation, testing and evidence. Technology applies knowledge to practical problems.",
+
+"Sports":
+"Sports develop skills such as teamwork, discipline and coordination.",
+
+"Environment":
+"An ecosystem contains living organisms and their surroundings.",
+
+"Important Days":
+"Important days highlight important themes such as education, environment, science and human rights."
+
+};
+
+function getNote(topic,classNo,subject){
+
+return notesText[topic] ||
+"Class "+classNo+" "+subject+
+" revision topic: "+topic+
+". Read the topic carefully and practise questions.";
+
+}
+
+function renderClasses(){
+
+const box=document.getElementById("classes");
+
+box.innerHTML="";
+
+[6,7,8,9,10].forEach(c=>{
+
+box.innerHTML += `
+<div class="card class-card clickable"
+onclick="showClass(${c})">
+
+<div class="class-number">${c}th</div>
+
+<h3>Class ${c}</h3>
+
+<p>7 Subjects</p>
+
+</div>
+`;
+
+});
+
+}
+
+function showClass(classNo){
+
+document.getElementById("home").classList.add("hidden");
+
+const page=document.getElementById("page");
+
+page.classList.remove("hidden");
+
+page.innerHTML=`
+
+<button class="back" onclick="goHome()">← Back</button>
+
+<div class="page-title">Class ${classNo}</div>
+
+<div class="page-subtitle">
+Select a subject to continue
+</div>
+
+<div class="grid">
+
+${subjects.map(subject=>`
+
+<div class="card subject-card clickable"
+onclick="showSubject(${classNo}, '${escapeQuotes(subject)}')">
+
+<div class="subject-icon">
+${subjectIcons[subject]}
+</div>
+
+<h3>${subject}</h3>
+
+<p>${topics[subject].length} chapters</p>
+
+</div>
+
+`).join("")}
+
+</div>
+`;
+
+scrollTop();
+
+}
+
+function showSubject(classNo,subject){
+
+const page=document.getElementById("page");
+
+page.innerHTML=`
+
+<button class="back"
+onclick="showClass(${classNo})">
+← Class ${classNo}
+</button>
+
+<div class="page-title">${subject}</div>
+
+<div class="page-subtitle">
+Class ${classNo} • Select a chapter
+</div>
+
+<div class="chapter-list">
+
+${topics[subject].map((topic,index)=>`
+
+<div class="chapter"
+onclick="openLesson(${classNo}, '${escapeQuotes(subject)}', '${escapeQuotes(topic)}')">
+
+<div class="chapter-number">
+${index+1}
+</div>
+
+<div class="chapter-info">
+
+<h3>${topic}</h3>
+
+<p>Tap to open lesson</p>
+
+</div>
+
+<div class="arrow">
+›
+</div>
+
+</div>
+
+`).join("")}
+
+</div>
+`;
+
+scrollTop();
+
+}
+
+function openLesson(classNo,subject,topic){
+
+const page=document.getElementById("page");
+
+page.innerHTML=`
+
+<button class="back"
+onclick="showSubject(${classNo}, '${escapeQuotes(subject)}')">
+← Back to Chapters
+</button>
+
+<div class="badge">
+Class ${classNo} • ${subject}
+</div>
+
+<div class="lesson">
+
+<h2>${topic}</h2>
+
+<h3>📖 Lesson</h3>
+
+<p>
+${getNote(topic,classNo,subject)}
+</p>
+
+<h3>📌 Important Points</h3>
+
+<ul>
+
+<li>Read the topic carefully.</li>
+
+<li>Learn the important definitions and concepts.</li>
+
+<li>Make short revision notes.</li>
+
+<li>Practise questions after studying the lesson.</li>
+
+<li>Revise the chapter regularly.</li>
+
+</ul>
+
+<h3>📝 Example / Revision</h3>
+
+<div class="formula">
+Topic: ${topic}<br>
+Class: ${classNo}<br>
+Subject: ${subject}
+</div>
+
+<p>
+After completing this lesson, you can practise
+important questions and MCQs below.
+</p>
+
+<div class="action-row">
+
+<button class="action primary"
+onclick="chapterQuiz('${escapeQuotes(topic)}')">
+📝 Start MCQ
+</button>
+
+<button class="action"
+onclick="importantQuestions('${escapeQuotes(topic)}')">
+❓ Important Questions
+</button>
+
+</div>
+
+</div>
+`;
+
+scrollTop();
+
+}
+
+function chapterQuiz(topic){
+
+const page=document.getElementById("page");
+
+const questions=getQuestions(topic);
+
+page.innerHTML=`
+
+<button class="back" onclick="goHome()">
+← Home
+</button>
+
+<div class="page-title">MCQ Quiz</div>
+
+<div class="page-subtitle">
+${topic}
+</div>
+
+<div id="quizBox"></div>
+
+`;
+
+const box=document.getElementById("quizBox");
+
+questions.forEach((q,index)=>{
+
+const div=document.createElement("div");
+
+div.className="question";
+
+div.innerHTML=`
+
+<h3>${index+1}. ${q.question}</h3>
+
+${q.options.map((option,i)=>`
+
+<button class="option"
+onclick="answerQuestion(this, ${i===q.answer})">
+
+${String.fromCharCode(65+i)}. ${option}
+
+</button>
+
+`).join("")}
+
+`;
+
+box.appendChild(div);
+
+});
+
+scrollTop();
+
+}
+
+function answerQuestion(button,correct){
+
+const parent=button.parentElement;
+
+const buttons=parent.querySelectorAll(".option");
+
+buttons.forEach(b=>b.disabled=true);
+
+if(correct){
+
+button.classList.add("correct");
+
+}else{
+
+button.classList.add("wrong");
+
+}
+
+}
+
+function getQuestions(topic){
+
+const data={
+
+"Number System":[
+{
+question:"Which number is a whole number?",
+options:["-2","0","1/2","-5"],
+answer:1
+},
+{
+question:"Which is the smallest whole number?",
+options:["0","1","-1","10"],
+answer:0
+},
+{
+question:"Which symbol is used for greater than?",
+options:["<",">","=","+"],
+answer:1
+}
 ],
-mcq:[
-["Which is the smallest whole number?","0",["0","1","-1","10"]],
-["Which of these is an integer?","-5",["2.5","-5","1/2","0.5"]],
-["What is 5 + 7?","12",["10","11","12","13"]]
+
+"Science":[
+{
+question:"What is needed for a simple electric circuit?",
+options:["Complete path","Only wire","Only bulb","Only switch"],
+answer:0
+},
+{
+question:"Which force can change motion?",
+options:["Force","Colour","Light only","Sound only"],
+answer:0
+},
+{
+question:"Sound is produced by?",
+options:["Vibrations","Shadows","Colours","Numbers"],
+answer:0
+}
+],
+
+"Electricity":[
+{
+question:"A simple electric circuit needs a complete:",
+options:["Path","Picture","Story","Map"],
+answer:0
+},
+{
+question:"Which component supplies electrical energy?",
+options:["Cell","Wire","Switch","Bulb"],
+answer:0
+}
+],
+
+"Grammar":[
+{
+question:"Which one is a verb?",
+options:["Run","Blue","Table","Quickly"],
+answer:0
+},
+{
+question:"Which word is a noun?",
+options:["School","Run","Beautiful","Quickly"],
+answer:0
+}
 ]
+
+};
+
+if(data[topic]) return data[topic];
+
+return [
+{
+question:"What should you do after studying a chapter?",
+options:[
+"Practise questions",
+"Never revise",
+"Ignore the topic",
+"Delete your notes"
+],
+answer:0
+},
+{
+question:"Which is useful for revision?",
+options:[
+"Short notes",
+"Random guessing",
+"Skipping study",
+"Nothing"
+],
+answer:0
+},
+{
+question:"Regular revision helps students to:",
+options:[
+"Remember concepts",
+"Forget everything",
+"Avoid learning",
+"Stop practising"
+],
+answer:0
+}
+];
+
+}
+
+function importantQuestions(topic){
+
+const page=document.getElementById("page");
+
+page.innerHTML=`
+
+<button class="back" onclick="goHome()">
+← Home
+</button>
+
+<div class="page-title">Important Questions</div>
+
+<div class="page-subtitle">
+${topic}
+</div>
+
+<div class="note-card">
+
+<h3>1. Define ${topic}.</h3>
+
+<p>
+Write the definition of ${topic} in simple and clear words.
+</p>
+
+</div>
+
+<div class="note-card">
+
+<h3>2. Write the important points of ${topic}.</h3>
+
+<p>
+Mention the main concepts, properties and examples related
+to this topic.
+</p>
+
+</div>
+
+<div class="note-card">
+
+<h3>3. Give an example related to ${topic}.</h3>
+
+<p>
+Practise at least one suitable example from the chapter.
+</p>
+
+</div>
+
+<div class="note-card">
+
+<h3>4. Why is ${topic} important?</h3>
+
+<p>
+Explain its importance using simple points.
+</p>
+
+</div>
+
+`;
+
+scrollTop();
+
+}
+
+function showAllSubjects(){
+
+document.getElementById("home").classList.add("hidden");
+
+const page=document.getElementById("page");
+
+page.classList.remove("hidden");
+
+page.innerHTML=`
+
+<button class="back" onclick="goHome()">
+← Home
+</button>
+
+<div class="page-title">
+All Subjects
+</div>
+
+<div class="page-subtitle">
+Subjects available for Classes 6-10
+</div>
+
+<div class="grid">
+
+${subjects.map(subject=>`
+
+<div class="card">
+
+<div class="subject-icon">
+${subjectIcons[subject]}
+</div>
+
+<h3>${subject}</h3>
+
+<p>
+${topics[subject].length} chapters
+</p>
+
+</div>
+
+`).join("")}
+
+</div>
+`;
+
+scrollTop();
+
+}
+
+function showAllNotes(){
+
+document.getElementById("home").classList.add("hidden");
+
+const page=document.getElementById("page");
+
+page.classList.remove("hidden");
+
+let html=`
+
+<button class="back" onclick="goHome()">
+← Home
+</button>
+
+<div class="page-title">
+Revision Notes
+</div>
+
+<div class="page-subtitle">
+Quick revision for Classes 6-10
+</div>
+`;
+
+[6,7,8,9,10].forEach(classNo=>{
+
+subjects.forEach(subject=>{
+
+topics[subject].slice(0,2).forEach(topic=>{
+
+html+=`
+
+<div class="note-card">
+
+<h3>
+Class ${classNo} • ${subject} • ${topic}
+</h3>
+
+<p>
+${getNote(topic,classNo,subject)}
+</p>
+
+</div>
+`;
+
+});
+
+});
+
+});
+
+page.innerHTML=html;
+
+scrollTop();
+
+}
+
+function showQuiz(){
+
+document.getElementById("home").classList.add("hidden");
+
+const page=document.getElementById("page");
+
+page.classList.remove("hidden");
+
+page.innerHTML=`
+
+<button class="back" onclick="goHome()">
+← Home
+</button>
+
+<div class="page-title">
+📝 MCQ Quiz
+</div>
+
+<div class="page-subtitle">
+General practice quiz
+</div>
+
+`;
+
+const box=document.createElement("div");
+
+const questions=[
+
+{
+question:"What is an input device?",
+options:["Keyboard","Monitor","Speaker","Printer"],
+answer:0
 },
 
-"Fractions and Decimals":{
-notes:`A fraction represents a part of a whole.
-
-A fraction has:
-• Numerator — number above the line.
-• Denominator — number below the line.
-
-Decimals use a decimal point to represent parts of a whole.
-
-Example:
-1/2 = 0.5
-1/4 = 0.25`,
-questions:[
-"What is a fraction?",
-"What is the numerator?",
-"What is the denominator?",
-"Convert 1/2 into decimal form."
-],
-mcq:[
-["Which is equal to 1/2?","0.5",["0.2","0.25","0.5","1.5"]],
-["In 3/5, what is 5?","Denominator",["Numerator","Denominator","Integer","Decimal"]]
-]
+{
+question:"A simple electric circuit needs a complete:",
+options:["Path","Picture","Book","Map"],
+answer:0
 },
 
-"Algebra Basics":{
-notes:`Algebra uses letters and symbols to represent unknown values.
-
-Examples:
-x + 5
-2x + 3
-a - 7
-
-A variable is a letter whose value can change.
-A constant has a fixed value.
-
-Example:
-If x = 4, then x + 3 = 7.`,
-questions:[
-"What is a variable?",
-"What is a constant?",
-"Evaluate x + 3 when x = 4.",
-"Give one algebraic expression."
-],
-mcq:[
-["Which can represent an unknown value?","Variable",["Variable","Constant","Unit","Angle"]],
-["If x = 4, x + 3 equals?","7",["5","6","7","8"]]
-]
+{
+question:"Which one is a part of speech?",
+options:["Verb","Number","Colour","Shape"],
+answer:0
 },
 
-"Geometry":{
-notes:`Geometry is the study of shapes, sizes, lines and angles.
-
-Important terms:
-• Point
-• Line
-• Line segment
-• Ray
-• Angle
-• Triangle
-• Quadrilateral
-
-Angles may be classified as acute, right, obtuse and straight angles.`,
-questions:[
-"What is a line segment?",
-"What is a right angle?",
-"Name two types of angles.",
-"What is a triangle?"
-],
-mcq:[
-["A right angle measures:","90°",["45°","60°","90°","180°"]],
-["A triangle has how many sides?","3",["2","3","4","5"]]
-]
+{
+question:"What can a force change?",
+options:["Motion or direction","Colour only","Name only","Language only"],
+answer:0
 },
 
-"Mensuration":{
-notes:`Mensuration deals with measurement of geometric figures.
-
-Common measurements include:
-• Length
-• Perimeter
-• Area
-• Volume
-
-Rectangle:
-Perimeter = 2 × (length + breadth)
-Area = length × breadth
-
-Always use appropriate units.`,
-questions:[
-"What is perimeter?",
-"Write the area formula of a rectangle.",
-"Write the perimeter formula of a rectangle.",
-"Why are units important?"
-],
-mcq:[
-["Area of a rectangle is:","length × breadth",["length + breadth","2(length+breadth)","length × breadth","length-breadth"]]
-]
-},
-
-"Data Handling":{
-notes:`Data is a collection of information.
-
-Data can be represented using:
-• Tables
-• Bar graphs
-• Line graphs
-• Pictographs
-
-Organising data makes it easier to understand and compare.`,
-questions:[
-"What is data?",
-"Name two ways to represent data.",
-"What is a bar graph?",
-"Why do we organise data?"
-],
-mcq:[
-["Which can represent data?","Bar graph",["Bar graph","Sentence only","Paragraph only","None"]]
-]
-},
-
-"Matter and Materials":{
-notes:`Matter is anything that has mass and occupies space.
-
-The common states of matter are:
-• Solid
-• Liquid
-• Gas
-
-Solids have a definite shape.
-Liquids have a definite volume but take the shape of their container.
-Gases spread to fill their container.
-
-Heating and cooling can change the state of matter.`,
-questions:[
-"What is matter?",
-"Name three states of matter.",
-"Give one property of a solid.",
-"How can matter change its state?"
-],
-mcq:[
-["Which has a definite shape?","Solid",["Gas","Liquid","Solid","None"]],
-["Water can exist as:","Solid, liquid and gas",["Only solid","Only liquid","Only gas","Solid, liquid and gas"]]
-]
-},
-
-"Living Organisms":{
-notes:`Living organisms perform life processes such as nutrition, respiration, growth and reproduction.
-
-Plants make food by photosynthesis.
-Animals obtain food from plants or other organisms.
-
-Cells are the basic structural units of living organisms.`,
-questions:[
-"What is a living organism?",
-"Name two life processes.",
-"What is photosynthesis?",
-"What is a cell?"
-],
-mcq:[
-["Plants prepare food by:","Photosynthesis",["Respiration","Photosynthesis","Digestion","Filtration"]]
-]
-},
-
-"Force and Motion":{
-notes:`A force is a push or pull.
-
-Force can change:
-• Motion
-• Direction
-• Speed
-• Shape of an object
-
-Motion describes a change in position with time.
-
-Examples of force include pushing a door and pulling a bag.`,
-questions:[
-"What is force?",
-"Give one example of a push.",
-"Give one example of a pull.",
-"What is motion?"
-],
-mcq:[
-["Force can be described as a:","Push or pull",["Colour","Push or pull","Temperature","Sound"]]
-]
-},
-
-"Light and Sound":{
-notes:`Light helps us see objects.
-
-Some objects produce their own light and are called luminous objects.
-
-Sound is produced by vibrations.
-Sound needs a medium to travel.
-
-Light generally travels in straight lines.`,
-questions:[
-"What is light?",
-"What produces sound?",
-"Does sound need a medium?",
-"Give one luminous object."
-],
-mcq:[
-["Sound is produced by:","Vibrations",["Heat","Vibrations","Light","Pressure only"]],
-["Light helps us to:","See",["Sleep","See","Eat","Measure mass"]]
-]
-},
-
-"Electricity":{
-notes:`Electricity is a form of energy used in many devices.
-
-A simple electric circuit generally contains:
-• Cell or battery
-• Connecting wires
-• Switch
-• Electrical device
-
-A complete circuit allows electric current to flow.`,
-questions:[
-"What is an electric circuit?",
-"Name two parts of a simple circuit.",
-"What is the function of a switch?",
-"When can current flow in a simple circuit?"
-],
-mcq:[
-["A switch is used to:","Open or close a circuit",["Produce water","Open or close a circuit","Measure mass","Make sound only"]]
-]
-},
-
-"Environment":{
-notes:`The environment includes living and non-living components around us.
-
-Living components include plants, animals and microorganisms.
-Non-living components include air, water, soil and sunlight.
-
-Pollution can harm organisms and ecosystems.
-Conservation helps protect natural resources.`,
-questions:[
-"What is environment?",
-"Name two non-living components.",
-"What is pollution?",
-"Why is conservation important?"
-],
-mcq:[
-["Which is a non-living component?","Water",["Tree","Animal","Water","Bird"]]
-]
-},
-
-"Grammar":{
-notes:`Grammar provides rules for using language correctly.
-
-Important areas include:
-• Nouns
-• Pronouns
-• Verbs
-• Adjectives
-• Adverbs
-• Tenses
-• Articles
-• Prepositions
-
-Correct grammar improves communication.`,
-questions:[
-"What is grammar?",
-"What is a noun?",
-"What is a verb?",
-"Why is grammar important?"
-],
-mcq:[
-["Which is a part of speech?","Verb",["Verb","Paragraph","Page","Chapter"]]
-]
-},
-
-"Vocabulary":{
-notes:`Vocabulary means the collection of words known and used by a person.
-
-Vocabulary can be improved by:
-• Reading regularly
-• Learning new words
-• Using a dictionary
-• Making sentences
-• Revising words frequently.`,
-questions:[
-"What is vocabulary?",
-"How can vocabulary be improved?",
-"What is a synonym?",
-"What is an antonym?"
-],
-mcq:[
-["A word with similar meaning is a:","Synonym",["Antonym","Synonym","Pronoun","Verb"]]
-]
-},
-
-"Reading Comprehension":{
-notes:`Reading comprehension means understanding information from a passage.
-
-Good readers:
-• Read carefully.
-• Identify the main idea.
-• Look for important details.
-• Understand unfamiliar words from context.
-• Answer questions using evidence from the passage.`,
-questions:[
-"What is reading comprehension?",
-"What is the main idea?",
-"Why should we read carefully?",
-"How can context help with vocabulary?"
-],
-mcq:[
-["Reading comprehension focuses on:","Understanding a passage",["Drawing only","Understanding a passage","Writing numbers","Memorising dates only"]]
-]
-},
-
-"Writing Skills":{
-notes:`Good writing should be clear, organised and appropriate for the purpose.
-
-Common forms include:
-• Paragraph writing
-• Letter writing
-• Applications
-• Essays
-• Notices
-
-A good paragraph usually has a clear topic and supporting ideas.`,
-questions:[
-"What makes writing effective?",
-"Name two forms of writing.",
-"What is a paragraph?",
-"Why is organisation important?"
-],
-mcq:[
-["A good paragraph should have:","A clear idea",["No idea","A clear idea","Only numbers","Only questions"]]
-]
-},
-
-"Parts of Speech":{
-notes:`Parts of speech describe the role of words in a sentence.
-
-Common parts include:
-• Noun
-• Pronoun
-• Verb
-• Adjective
-• Adverb
-• Preposition
-• Conjunction
-• Interjection`,
-questions:[
-"What is a noun?",
-"What is a verb?",
-"What is an adjective?",
-"Name four parts of speech."
-],
-mcq:[
-["A word showing an action is often a:","Verb",["Noun","Verb","Article","Preposition"]]
-]
-},
-
-"Tenses":{
-notes:`Tense tells us the time of an action.
-
-The three basic tenses are:
-• Present
-• Past
-• Future
-
-Examples:
-Present: I study.
-Past: I studied.
-Future: I will study.`,
-questions:[
-"What does tense show?",
-"Name the three basic tenses.",
-"Give one present tense example.",
-"Give one future tense example."
-],
-mcq:[
-["'I studied' is in the:","Past tense",["Present tense","Past tense","Future tense","None"]]
-]
-},
-
-"व्याकरण":{
-notes:`व्याकरण भाषा को सही ढंग से बोलने और लिखने के नियमों का अध्ययन है।
-
-मुख्य विषय:
-• संज्ञा
-• सर्वनाम
-• क्रिया
-• विशेषण
-• काल
-• वचन
-• लिंग
-• वाक्य रचना
-
-सही व्याकरण भाषा को स्पष्ट बनाता है।`,
-questions:[
-"व्याकरण क्या है?",
-"संज्ञा क्या है?",
-"क्रिया क्या है?",
-"सर्वनाम क्या है?"
-],
-mcq:[
-["व्याकरण किससे संबंधित है?","भाषा के सही प्रयोग से",["केवल गणित से","भाषा के सही प्रयोग से","केवल विज्ञान से","केवल चित्रों से"]]
-]
-},
-
-"शब्द भंडार":{
-notes:`शब्द भंडार का अर्थ भाषा में उपलब्ध और प्रयोग किए जाने वाले शब्दों का ज्ञान है।
-
-शब्द भंडार बढ़ाने के लिए:
-• नियमित पढ़ें।
-• नए शब्द लिखें।
-• शब्दों के अर्थ सीखें।
-• वाक्य बनाएं।
-• पुनरावृत्ति करें।`,
-questions:[
-"शब्द भंडार क्या है?",
-"शब्द भंडार कैसे बढ़ाया जा सकता है?",
-"पर्यायवाची शब्द क्या हैं?",
-"विलोम शब्द क्या हैं?"
-],
-mcq:[
-["समान अर्थ वाले शब्द कहलाते हैं:","पर्यायवाची",["विलोम","पर्यायवाची","संज्ञा","क्रिया"]]
-]
-},
-
-"पठन कौशल":{
-notes:`पठन कौशल का अर्थ लिखित सामग्री को सही ढंग से पढ़कर उसका अर्थ समझना है।
-
-अच्छे पठन के लिए:
-• ध्यान से पढ़ें।
-• मुख्य विचार पहचानें।
-• महत्वपूर्ण जानकारी खोजें।
-• कठिन शब्दों का अर्थ संदर्भ से समझें।`,
-questions:[
-"पठन कौशल क्या है?",
-"मुख्य विचार क्या होता है?",
-"ध्यान से पढ़ना क्यों जरूरी है?"
-],
-mcq:[
-["पठन का मुख्य उद्देश्य क्या है?","अर्थ समझना",["केवल तेज पढ़ना","अर्थ समझना","केवल लिखना","केवल बोलना"]]
-]
-},
-
-"लेखन कौशल":{
-notes:`लेखन कौशल विचारों को स्पष्ट और व्यवस्थित रूप से लिखने की क्षमता है।
-
-अच्छे लेखन में:
-• स्पष्ट विचार
-• सही भाषा
-• उचित क्रम
-• सही वर्तनी
-• उचित विराम चिह्न शामिल होते हैं।`,
-questions:[
-"लेखन कौशल क्या है?",
-"अच्छे लेखन की दो विशेषताएं बताइए।",
-"विराम चिह्न क्यों जरूरी हैं?"
-],
-mcq:[
-["अच्छे लेखन में क्या जरूरी है?","स्पष्ट विचार",["अव्यवस्था","स्पष्ट विचार","गलत वर्तनी","कोई क्रम नहीं"]]
-]
-},
-
-"वाक्य रचना":{
-notes:`वाक्य शब्दों का ऐसा व्यवस्थित समूह है जो पूरा अर्थ प्रकट करता है।
-
-वाक्य में शब्दों का सही क्रम और उचित प्रयोग जरूरी है।
-
-उदाहरण:
-राम स्कूल जाता है।
-यह एक पूर्ण अर्थ वाला वाक्य है।`,
-questions:[
-"वाक्य क्या है?",
-"वाक्य में शब्दों का क्रम क्यों महत्वपूर्ण है?",
-"एक उदाहरण लिखिए।"
-],
-mcq:[
-["पूर्ण अर्थ प्रकट करने वाला शब्द समूह क्या है?","वाक्य",["अक्षर","वाक्य","ध्वनि","मात्रा"]]
-]
-},
-
-"साहित्य अभ्यास":{
-notes:`साहित्य में कविता, कहानी, नाटक और अन्य रचनात्मक विधाएं शामिल होती हैं।
-
-साहित्य पढ़ते समय:
-• मुख्य विचार समझें।
-• पात्रों को पहचानें।
-• घटनाओं का क्रम समझें।
-• नए शब्दों के अर्थ देखें।`,
-questions:[
-"साहित्य क्या है?",
-"कहानी के पात्र कौन होते हैं?",
-"साहित्य पढ़ने से क्या लाभ होता है?"
-],
-mcq:[
-["साहित्य में क्या शामिल हो सकता है?","कविता",["कविता","केवल गणित","केवल मानचित्र","केवल संख्या"]]
-]
-},
-
-"History":{
-notes:`History is the study of past events, people, societies and changes.
-
-Historical study uses evidence such as:
-• Written records
-• Inscriptions
-• Coins
-• Buildings
-• Artefacts
-
-History helps us understand how societies changed over time.`,
-questions:[
-"What is history?",
-"Name two sources of history.",
-"Why do we study history?",
-"What is an inscription?"
-],
-mcq:[
-["Which can be a historical source?","Coins",["Coins","Only weather","Only electricity","Only sports"]]
-]
-},
-
-"Geography":{
-notes:`Geography studies the Earth, places, people and the relationship between humans and their environment.
-
-Important areas include:
-• Landforms
-• Climate
-• Rivers
-• Resources
-• Population
-• Maps`,
-questions:[
-"What is geography?",
-"What is a map?",
-"Name two natural resources.",
-"What is climate?"
-],
-mcq:[
-["Geography studies:","Earth and places",["Only numbers","Earth and places","Only grammar","Only computers"]]
-]
-},
-
-"Civics":{
-notes:`Civics is the study of government, citizenship, rights and responsibilities.
-
-A responsible citizen:
-• Respects laws.
-• Respects other people.
-• Protects public property.
-• Participates responsibly in society.`,
-questions:[
-"What is civics?",
-"Who is a citizen?",
-"Name one responsibility of a citizen.",
-"Why are laws important?"
-],
-mcq:[
-["A responsible citizen should:","Respect laws",["Break laws","Respect laws","Damage public property","Ignore others"]]
-]
-},
-
-"Economics":{
-notes:`Economics studies how people use resources to satisfy needs and wants.
-
-Important concepts include:
-• Needs
-• Wants
-• Goods
-• Services
-• Production
-• Consumption
-• Saving`,
-questions:[
-"What is economics?",
-"What is a need?",
-"What is a want?",
-"What is a service?"
-],
-mcq:[
-["Which is generally a basic need?","Food",["Food","Luxury item","Game score","Decoration"]]
-]
-},
-
-"Environment and Society":{
-notes:`People and the environment are closely connected.
-
-Human activities can affect air, water, soil, forests and wildlife.
-
-Sustainable practices include:
-• Saving water
-• Reducing waste
-• Protecting forests
-• Using resources carefully`,
-questions:[
-"How are society and environment connected?",
-"Name two ways to protect the environment.",
-"What is conservation?"
-],
-mcq:[
-["Which helps the environment?","Saving water",["Wasting water","Saving water","Littering","Cutting forests unnecessarily"]]
-]
-},
-
-"Map Skills":{
-notes:`Maps represent places on a smaller scale.
-
-Important map elements include:
-• Title
-• Direction
-• Scale
-• Symbols
-• Legend
-
-Maps help us locate and understand places.`,
-questions:[
-"What is a map?",
-"What is scale?",
-"What is a map symbol?",
-"Name four elements of a map."
-],
-mcq:[
-["A map can show:","Locations",["Locations","Only sounds","Only grammar","Only equations"]]
-]
-},
-
-"Computer Fundamentals":{
-notes:`A computer is an electronic device that accepts data, processes it and produces information.
-
-Basic components include:
-• Input devices
-• CPU
-• Memory
-• Storage
-• Output devices
-
-Keyboard and mouse are common input devices.`,
-questions:[
-"What
+{
+question:"What helps protect biodiversity?",
+options:["Conservation","Pollution","Deforestation","Waste"],
+answer:0
+}
+
+];
+
+questions.forEach((q,index)=>{
+
+const div=document.createElement("div");
+
+div.className="question";
+
+div.innerHTML=`
+
+<h3>${index+1}. ${q.question}</h3>
+
+${q.options.map((option,i)=>`
+
+<button class="option"
+onclick="answerQuestion(this, ${i===q.answer})">
+
+${String.fromCharCode(65+i)}. ${option}
+
+</button>
+
+`).join("")}
+
+`;
+
+box.appendChild(div);
+
+});
+
+page.appendChild(box);
+
+scrollTop();
+
+}
+
+function searchSite(){
+
+const input=document.getElementById("searchInput");
+
+const query=input.value.trim().toLowerCase();
+
+if(!query){
+
+goHome();
+
+return;
+
+}
+
+document.getElementById("home").classList.add("hidden");
+
+const page=document.getElementById("page");
+
+page.classList.remove("hidden");
+
+let results=[];
+
+[6,7,8,9,10].forEach(classNo=>{
+
+subjects.forEach(subject=>{
+
+topics[subject].forEach(topic=>{
+
+const text=(
+
+"Class "+classNo+" "+subject+" "+topic+" "+
+getNote(topic,classNo,subject)
+
+).toLowerCase();
+
+if(text.includes(query)){
+
+results.push({
+
+classNo,
+subject,
+topic
+
+});
+
+}
+
+});
+
+});
+
+});
+
+let html=`
+
+<button class="back" onclick="goHome()">
+← Home
+</button>
+
+<div class="page-title">
+Search Results
+</div>
+
+<div class="page-subtitle">
+Results for: ${escapeHTML(query)}
+</div>
+`;
+
+if(results.length===0){
+
+html+=`
+
+<div class="empty">
+
+<h3>No result found</h3>
+
+<p>
+Try searching for Science, Mathematics,
+Electricity, Grammar, Class 10, etc.
+</p>
+
+</div>
+`;
+
+}else{
+
+html+=`<div class="chapter-list">`;
+
+results.slice(0,50).forEach(result=>{
+
+html+=`
+
+<div class="chapter"
+onclick="openLesson(
+${result.classNo},
+'${escapeQuotes(result.subject)}',
+'${escapeQuotes(result.topic)}'
+)">
+
+<div class="chapter-number">
+📖
+</div>
+
+<div class="chapter-info">
+
+<h3>${result.topic}</h3>
+
+<p>
+Class ${result.classNo} • ${result.subject}
+</p>
+
+</div>
+
+<div class="arrow">›</div>
+
+</div>
+`;
+
+});
+
+html+=`</div>`;
+
+}
+
+page.innerHTML=html;
+
+scrollTop();
+
+}
+
+function goHome(){
+
+document.getElementById("home").classList.remove("hidden");
+
+document.getElementById("page").classList.add("hidden");
+
+document.getElementById("searchInput").value="";
+
+scrollTop();
+
+}
+
+function scrollTop(){
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+function escapeQuotes(text){
+
+return text
+.replace(/\\/g,"\\\\")
+.replace(/'/g,"\\'");
+
+}
+
+function escapeHTML(text){
+
+const div=document.createElement("div");
+
+div.textContent=text;
+
+return div.innerHTML;
+
+}
+
+renderClasses();
+
+document
+.getElementById("searchInput")
+.addEventListener("keydown",function(event){
+
+if(event.key==="Enter"){
+
+searchSite();
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
