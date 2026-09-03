@@ -430,7 +430,87 @@ padding:12px;
 </head>
 
 <body>
+  
+<div class="app-download-box">
+  <div class="app-download-icon">📱</div>
 
+  <div class="app-download-content">
+    <h2>Study Hub App</h2>
+    <p>Study Hub 6 to 10 अब अपने फोन में भी इस्तेमाल करें!</p>
+
+    <a class="download-app-btn"
+       href="Study_hub.apk"
+       download>
+      ⬇️ Download App
+    </a>
+  </div>
+</div>
+
+<style>
+.app-download-box {
+  max-width: 650px;
+  margin: 25px auto;
+  padding: 22px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+  box-sizing: border-box;
+}
+
+.app-download-icon {
+  font-size: 48px;
+  flex-shrink: 0;
+}
+
+.app-download-content h2 {
+  margin: 0 0 6px;
+  font-size: 24px;
+}
+
+.app-download-content p {
+  margin: 0 0 15px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.download-app-btn {
+  display: inline-block;
+  padding: 11px 20px;
+  background: white;
+  color: #4f46e5;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.download-app-btn:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 500px) {
+  .app-download-box {
+    margin: 18px 12px;
+    padding: 18px;
+  }
+
+  .app-download-icon {
+    font-size: 38px;
+  }
+
+  .app-download-content h2 {
+    font-size: 20px;
+  }
+
+  .app-download-content p {
+    font-size: 14px;
+  }
+}
+</style>
 <header>
 <div class="header-inner">
 <div class="logo">Study Hub <span>6-10</span></div>
